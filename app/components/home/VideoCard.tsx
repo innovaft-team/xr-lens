@@ -131,21 +131,20 @@ const VideoCard: React.FC = () => {
         </div>
 
         <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 max-lg:-bottom-3 z-50">
-          <motion.span
+          <CommonButton
+            variant="glass"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             viewport={{ once: true }}
             transition={{
               delay: 0.6,
               duration: 0.8,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="bg-white/85 border backdrop-blur-2xl border-white text-sm font-medium py-3 px-5 rounded-full cursor-pointer block w-max max-md:text-xs max-md:px-4 max-md:py-2 transition-all duration-300 hover:bg-white hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+            className="block w-max"
           >
             Voir la démo
-          </motion.span>
+          </CommonButton>
         </div>
       </motion.div>
     </motion.div>

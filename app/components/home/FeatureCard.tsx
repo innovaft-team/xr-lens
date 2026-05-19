@@ -37,14 +37,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         isLeft ? "" : "flex-row-reverse max-md:flex-row"
       }`}
     >
-      <div
-        className={`glass-card-icon-container ${
-          isLeft
-            ? ""
-            : "max-md:rounded-tl-none max-md:rounded-br-none max-md:rounded-bl-[28.25px] max-md:rounded-tr-[28.25px]"
-        }`}
-      >
-        <Image src={iconSrc} alt={iconAlt} width={44} height={72} />
+      <div className="glass-card-icon-container">
+        <Image src={iconSrc} alt={iconAlt} width={64} height={50} />
       </div>
       <div className="relative z-10">
         <h4 className="text-[14.29px] font-medium text-charcoal leading-[169%]">

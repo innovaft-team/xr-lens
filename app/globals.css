@@ -103,7 +103,7 @@ body {
   }
 
   .glass-card-icon-container {
-    @apply rounded-[28.25px] rounded-tr-none rounded-bl-none size-[94.16px] grid place-items-center relative z-10 bg-white/40 backdrop-blur-xl shadow-[inset_4px_4px_10px_rgba(255,255,255,1),inset_-4px_-4px_10px_rgba(0,0,0,0.05),0_8px_20px_rgba(0,0,0,0.04)];
+    @apply rounded-[28.25px] size-[94.16px] grid place-items-center relative z-10 bg-white/10 backdrop-blur-md border border-white/40 overflow-hidden shadow-[inset_1px_1px_3px_rgba(255,255,255,0.8),inset_-1px_-1px_3px_rgba(0,0,0,0.05),0_6px_16px_rgba(0,0,0,0.02)];
   }
 
   .glass-card-inner-overlay {
