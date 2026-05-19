@@ -42,32 +42,33 @@ export default function HomePageClient() {
   }, [mouseX, mouseY]);
 
   return (
-    <main className="hero-main-container">
+    <main className="relative min-h-screen w-full overflow-x-hidden">
       <GradientBackground />
-      <Navbar />
+      <div className="hero-main-container max-w-[1440px] mx-auto w-full relative">
+        <Navbar />
 
-      <CommonHeading as="h1" variant="hero">
-        XR lens
-      </CommonHeading>
+        <CommonHeading as="h1" variant="hero">
+          XR lens
+        </CommonHeading>
 
-      <HeroForeground parallaxX={parallaxX} parallaxY={parallaxY} />
+        <HeroForeground parallaxX={parallaxX} parallaxY={parallaxY} />
 
-      <div className="flex items-center justify-between relative z-10 max-md:flex-col max-md:gap-6 max-lg:gap-8 max-lg:mt-[clamp(150px,25vw,300px)]">
-        {FEATURE_CARDS.map((card) => (
-          <FeatureCard
-            key={card.id}
-            title={card.title}
-            description={card.description}
-            iconSrc={card.iconSrc}
-            iconAlt={card.iconAlt}
-            arrowDirection={card.arrowDirection}
-            delay={card.delay}
-            hoverDelay={card.hoverDelay}
-          />
-        ))}
+        <div className="flex items-center justify-between relative z-10 max-md:flex-col max-md:gap-6 max-lg:gap-8 max-lg:mt-[clamp(150px,25vw,300px)]">
+          {FEATURE_CARDS.map((card) => (
+            <FeatureCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              iconSrc={card.iconSrc}
+              iconAlt={card.iconAlt}
+              arrowDirection={card.arrowDirection}
+              delay={card.delay}
+              hoverDelay={card.hoverDelay}
+            />
+          ))}
+        </div>
+        <VideoCard />
       </div>
-
-      <VideoCard />
     </main>
   );
 }
