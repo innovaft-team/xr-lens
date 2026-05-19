@@ -1,73 +1,107 @@
-"use client";
+import type { Metadata } from "next";
+import HomePageClient from "./components/home/HomePageClient";
 
-import { useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
-import Navbar from "./components/common/Navbar";
-import CommonHeading from "./components/common/CommonHeading";
-import FeatureCard from "./components/home/FeatureCard";
-import GradientBackground from "./components/home/GradientBackground";
-import HeroForeground from "./components/home/HeroForeground";
-import VideoCard from "./components/home/VideoCard";
-import { FEATURE_CARDS } from "./constants";
+export const metadata: Metadata = {
+  title: "XR Lens — Futuristic Augmented Reality Experience",
+  description: "Discover XR Lens, a futuristic augmented reality interface with premium glassmorphism UI, immersive visuals, neural interaction design, and cutting-edge spatial experiences.",
+  keywords: [
+    "XR Lens",
+    "AR Interface",
+    "Futuristic UI",
+    "Glassmorphism",
+    "Augmented Reality",
+    "Spatial Computing",
+    "Apple Vision Inspired",
+    "Framer Motion",
+    "Premium Landing Page"
+  ],
+  authors: [{ name: "XR Lens Team" }],
+  creator: "XR Lens",
+  metadataBase: new URL("https://xr-lens.vercel.app"),
+  alternates: {
+    canonical: "https://xr-lens.vercel.app",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    title: "XR Lens — Futuristic Augmented Reality Experience",
+    description: "Discover XR Lens, a futuristic augmented reality interface with premium glassmorphism UI, immersive visuals, neural interaction design, and cutting-edge spatial experiences.",
+    url: "https://xr-lens.vercel.app",
+    siteName: "XR Lens",
+    images: [
+      {
+        url: "/images/svg/logo.svg",
+        width: 800,
+        height: 800,
+        alt: "XR Lens Logo",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "XR Lens — Futuristic Augmented Reality Experience",
+    description: "Discover XR Lens, a futuristic augmented reality interface with premium glassmorphism UI, immersive visuals, neural interaction design, and cutting-edge spatial experiences.",
+    images: ["/images/svg/logo.svg"],
+  },
+};
 
 export default function Home() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const parallaxX = useTransform(smoothX, [-0.5, 0.5], [-15, 15]);
-  const parallaxY = useTransform(smoothY, [-0.5, 0.5], [-15, 15]);
-
-  useEffect(() => {
-    let animationFrameId: number;
-    const handleMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(() => {
-        const { innerWidth, innerHeight } = window;
-        const x = e.clientX / innerWidth - 0.5;
-        const y = e.clientY / innerHeight - 0.5;
-        mouseX.set(x);
-        mouseY.set(y);
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [mouseX, mouseY]);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://xr-lens.vercel.app/#organization",
+        "name": "XR Lens",
+        "url": "https://xr-lens.vercel.app",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://xr-lens.vercel.app/images/svg/logo.svg",
+          "caption": "XR Lens Logo"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://xr-lens.vercel.app/#website",
+        "url": "https://xr-lens.vercel.app",
+        "name": "XR Lens",
+        "description": "Futuristic Augmented Reality Experience",
+        "publisher": {
+          "@id": "https://xr-lens.vercel.app/#organization"
+        }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://xr-lens.vercel.app/#product",
+        "name": "XR Lens",
+        "image": "https://xr-lens.vercel.app/images/svg/logo.svg",
+        "description": "La première lentille de réalité augmentée conçue pour étendre les capacités naturelles de la vision humaine.",
+        "brand": {
+          "@type": "Brand",
+          "name": "XR Lens"
+        }
+      }
+    ]
+  };
 
   return (
-    <main className="hero-main-container">
-      <GradientBackground />
-      <Navbar />
-
-      <CommonHeading as="h1" variant="hero">
-        XR lens
-      </CommonHeading>
-
-      <HeroForeground parallaxX={parallaxX} parallaxY={parallaxY} />
-
-      <div className="flex items-center justify-between relative z-10 max-md:flex-col max-md:gap-6 max-lg:gap-8 max-lg:mt-[clamp(150px,25vw,300px)]">
-        {FEATURE_CARDS.map((card) => (
-          <FeatureCard
-            key={card.id}
-            title={card.title}
-            description={card.description}
-            iconSrc={card.iconSrc}
-            iconAlt={card.iconAlt}
-            arrowDirection={card.arrowDirection}
-            delay={card.delay}
-            hoverDelay={card.hoverDelay}
-          />
-        ))}
-      </div>
-
-      <VideoCard />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomePageClient />
+    </>
   );
 }

@@ -14,10 +14,10 @@ const Navbar = () => {
       {...fadeInNavbar}
       className="flex items-center justify-between w-158.75 mx-auto max-md:w-full max-md:px-4"
     >
-      <a href="#">
+      <a href="#" aria-label="XR Lens Homepage">
         <Image
           src="/images/svg/logo.svg"
-          alt="Logo"
+          alt="XR Lens Logo"
           width={24.77}
           height={25.85}
         />

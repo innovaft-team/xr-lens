@@ -14,6 +14,8 @@ const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying = false, onClick, cla
   return (
     <button
       onClick={onClick}
+      type="button"
+      aria-label={isPlaying ? "Pause video demo" : "Play video demo"}
       className={`w-12 h-12 rounded-full absolute top-1/2 left-1/2
         -translate-x-1/2 -translate-y-1/2
         bg-white/12 border border-white/18

@@ -9,6 +9,7 @@ interface CommonButtonProps {
   href?: string;
   className?: string;
   onClick?: () => void;
+  ariaLabel?: string;
 }
 
 const CommonButton: React.FC<CommonButtonProps> = ({
@@ -17,6 +18,7 @@ const CommonButton: React.FC<CommonButtonProps> = ({
   href,
   className = "",
   onClick,
+  ariaLabel,
 }) => {
   const Comp = href ? motion.a : motion.button;
 
@@ -42,6 +44,8 @@ const CommonButton: React.FC<CommonButtonProps> = ({
     <Comp
       href={href}
       onClick={onClick}
+      aria-label={ariaLabel}
+      type={href ? undefined : "button"}
       className={`${baseStyles} ${variantClasses[variant]} ${className}`}
       {...motionProps}
     >
