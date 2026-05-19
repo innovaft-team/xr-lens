@@ -79,3 +79,43 @@ body {
       inset -1px -1px 1px 1px rgba(255, 255, 255, 0.4);
   }
 }
+
+@layer components {
+  .hero-main-container {
+    @apply relative pt-[clamp(1.5rem,2.97vw,42.91px)] px-[clamp(1rem,6.59vw,94.98px)] max-xl:px-10 max-[1024px]:px-6 max-md:px-4 pb-[clamp(2rem,4.16vw,60px)];
+  }
+
+  .hero-title {
+    @apply mt-[clamp(20px,2.73vw,39.38px)] font-inter text-[clamp(4rem,18.05vw,259.96px)] bg-linear-to-t to-white from-white/0 bg-clip-text text-transparent uppercase font-semibold leading-[100%] text-center will-change-transform;
+  }
+
+  @media (max-width: 1023px) {
+    .hero-title {
+      background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
+    }
+  }
+  
+  .hero-glow-blob {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[clamp(300px,41.6vw,600px)] h-[clamp(150px,20.8vw,300px)] bg-white/5 rounded-[50%] blur-[80px];
+  }
+
+  .glass-card-outer {
+    @apply relative bg-white/60 backdrop-blur-[20px] border border-white/60 rounded-[16.99px] shadow-[inset_1px_1px_1px_rgba(255,255,255,0.6),0_8px_32px_rgba(0,0,0,0.04)] w-fit p-[12.74px];
+  }
+
+  .glass-card-icon-container {
+    @apply rounded-[28.25px] rounded-tr-none rounded-bl-none size-[94.16px] grid place-items-center relative z-10 bg-white/40 backdrop-blur-xl shadow-[inset_4px_4px_10px_rgba(255,255,255,1),inset_-4px_-4px_10px_rgba(0,0,0,0.05),0_8px_20px_rgba(0,0,0,0.04)];
+  }
+
+  .glass-card-inner-overlay {
+    @apply absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12;
+  }
+
+  .hero-arrow-left {
+    @apply absolute top-1/2 -translate-y-1/2 -bottom-4 -right-43 -z-20 max-lg:hidden origin-left max-xl:scale-[0.8] max-xl:-right-24;
+  }
+
+  .hero-arrow-right {
+    @apply absolute top-1/2 -translate-y-1/2 -bottom-20 -left-51 -z-20 max-lg:hidden origin-right max-xl:scale-[0.8] max-xl:-left-32;
+  }
+}
