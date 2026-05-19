@@ -89,8 +89,8 @@ const VideoCard: React.FC = () => {
           className="relative group/video overflow-hidden rounded-2xl max-lg:w-full cursor-pointer"
         >
           <motion.div
-            initial={{ filter: "blur(10px)", scale: 1.05 }}
-            whileInView={{ filter: "blur(0px)", scale: 1 }}
+            initial={{ opacity: 0.8, scale: 1.05 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{
               duration: 1.2,
@@ -101,13 +101,17 @@ const VideoCard: React.FC = () => {
           >
             <video
               ref={videoRef}
-              src="/videos/loop.mp4"
               poster="/images/webp/video.webp"
+              preload="metadata"
+              {...{ fetchPriority: "high" }}
               muted
               loop
               playsInline
               className="rounded-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/video:scale-105 w-[244px] h-[160px] max-lg:w-full max-lg:h-auto object-cover aspect-[244/160]"
-            />
+            >
+              <source src="/videos/loop.webm" type="video/webm" />
+              <source src="/videos/loop.mp4" type="video/mp4" />
+            </video>
           </motion.div>
           <span
             className={`w-full h-full block absolute top-0 rounded-2xl pointer-events-none transition-opacity duration-500 bg-black/60 ${

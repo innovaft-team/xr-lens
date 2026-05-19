@@ -3,8 +3,8 @@ import { Variants } from "framer-motion";
 export const EASE_CUSTOM: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const fadeInBackground = {
-  initial: { opacity: 0, filter: "blur(20px)" },
-  animate: { opacity: 1, filter: "blur(0px)" },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
   transition: { duration: 1.5, ease: EASE_CUSTOM },
 };
 
@@ -15,14 +15,14 @@ export const fadeInNavbar = {
 };
 
 export const fadeInHeroTitle = {
-  initial: { opacity: 0, y: 30, filter: "blur(10px)", scale: 0.98 },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
+  initial: { opacity: 0, y: 30, scale: 0.98 },
+  animate: { opacity: 1, y: 0, scale: 1 },
   transition: { duration: 1.2, delay: 0.2, ease: EASE_CUSTOM },
 };
 
 export const fadeInLensContainer = {
-  initial: { opacity: 0, scale: 0.9, filter: "blur(10px)" },
-  animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+  initial: { opacity: 0, scale: 0.9 },
+  animate: { opacity: 1, scale: 1 },
   transition: { duration: 1.2, delay: 0.4, ease: EASE_CUSTOM },
 };
 
@@ -37,8 +37,8 @@ export const pulseGlowBlob = {
 };
 
 export const getFadeInCardWrapper = (delay: number, xOffset: number) => ({
-  initial: { opacity: 0, x: xOffset, filter: "blur(10px)" },
-  animate: { opacity: 1, x: 0, filter: "blur(0px)" },
+  initial: { opacity: 0, x: xOffset },
+  animate: { opacity: 1, x: 0 },
   transition: { duration: 1, delay, ease: EASE_CUSTOM },
 });
 
@@ -55,11 +55,10 @@ export const getFloatCard = (delay: number) => ({
 });
 
 export const videoCardVariants: Variants = {
-  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: 1,
       ease: EASE_CUSTOM,

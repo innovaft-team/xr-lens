@@ -97,6 +97,8 @@ export default function Home() {
 
   return (
     <>
+      <link rel="preload" href="/images/webp/video.webp" as="image" type="image/webp" {...{ fetchPriority: "high" }} />
+      <link rel="preload" href="/videos/loop.webm" as="video" type="video/webm" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

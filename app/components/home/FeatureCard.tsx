@@ -44,7 +44,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             : "max-md:rounded-tl-none max-md:rounded-br-none max-md:rounded-bl-[28.25px] max-md:rounded-tr-[28.25px]"
         }`}
       >
-        <Image src={iconSrc} alt={iconAlt} width={43.59} height={71.9} />
+        <Image src={iconSrc} alt={iconAlt} width={44} height={72} />
       </div>
       <div className="relative z-10">
         <h4 className="text-[14.29px] font-medium text-charcoal leading-[169%]">

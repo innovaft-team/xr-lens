@@ -15,6 +15,7 @@ const GradientBackground: React.FC = () => {
         src="/images/svg/herobg.svg"
         alt="Hero Background"
         fill
+        sizes="100vw"
         className="object-cover object-center"
         priority
       />

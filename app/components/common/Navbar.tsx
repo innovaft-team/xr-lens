@@ -18,8 +18,8 @@ const Navbar = () => {
         <Image
           src="/images/svg/logo.svg"
           alt="XR Lens Logo"
-          width={24.77}
-          height={25.85}
+          width={25}
+          height={26}
         />
       </a>
       <div className="flex items-center gap-[19.06px] max-sm:gap-3">

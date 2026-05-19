@@ -34,6 +34,7 @@ const HeroForeground: React.FC<HeroForegroundProps> = ({ parallaxX, parallaxY })
               alt="XR Lens"
               fill
               priority
+              sizes="(max-width: 768px) 80vw, (max-width: 1024px) 50vw, 813px"
               className="object-contain"
             />
           </motion.div>
