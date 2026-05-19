@@ -86,7 +86,7 @@ body {
   }
 
   .hero-title {
-    @apply mt-[clamp(20px,2.73vw,39.38px)] font-inter text-[clamp(4rem,18.05vw,259.96px)] bg-linear-to-t to-white from-white/0 bg-clip-text text-transparent uppercase font-semibold leading-[100%] text-center will-change-transform;
+    @apply mt-[clamp(20px,2.73vw,39.38px)] text-[clamp(4rem,18.05vw,259.96px)] bg-linear-to-t to-white from-white/0 bg-clip-text text-transparent uppercase font-semibold leading-[100%] text-center will-change-transform;
   }
 
   @media (max-width: 1023px) {

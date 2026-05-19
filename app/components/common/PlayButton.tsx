@@ -2,14 +2,15 @@
 
 import { motion } from "framer-motion";
 import React from "react";
-import { PauseIcon } from "./Icons";
+import { PlayIcon, PauseIcon } from "./Icons";
 
 interface PlayButtonProps {
+  isPlaying?: boolean;
   onClick?: () => void;
   className?: string;
 }
 
-const PlayButton: React.FC<PlayButtonProps> = ({ onClick, className = "" }) => {
+const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying = false, onClick, className = "" }) => {
   return (
     <button
       onClick={onClick}
@@ -37,7 +38,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ onClick, className = "" }) => {
                   inset_-1px_-1px_1px_1px_rgba(255,255,255,0.4),
                   inset_0px_-10px_20px_rgba(255,255,255,0.06)]"
       >
-        <PauseIcon />
+        {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </motion.div>
     </button>
   );

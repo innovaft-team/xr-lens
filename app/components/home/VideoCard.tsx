@@ -8,6 +8,20 @@ import PlayButton from "../common/PlayButton";
 import { videoCardVariants } from "../../utils/animations";
 
 const VideoCard: React.FC = () => {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().catch((err) => console.log(err));
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <motion.div
       initial="hidden"
@@ -44,7 +58,7 @@ const VideoCard: React.FC = () => {
             visible: { opacity: 1, y: 0 },
           }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="leading-[100%] text-charcoal/64 w-107.5 pt-3 pb-7.5 max-xl:w-full max-md:text-sm"
+          className="leading-[100%] text-charcoal/64 max-w-107.5 pt-3 pb-7.5 w-full max-xl:max-w-[440px] max-md:text-sm"
         >
           La première lentille de réalité augmentée conçue pour étendre les
           capacités naturelles de la vision humaine.
@@ -57,12 +71,8 @@ const VideoCard: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center gap-3 max-md:flex-col max-md:items-stretch max-md:w-full"
         >
-          <CommonButton variant="primary">
-            Découvrir XR Lens
-          </CommonButton>
-          <CommonButton variant="secondary">
-            Voir la démo
-          </CommonButton>
+          <CommonButton variant="primary">Découvrir XR Lens</CommonButton>
+          <CommonButton variant="secondary">Voir la démo</CommonButton>
         </motion.div>
       </div>
 
@@ -74,7 +84,10 @@ const VideoCard: React.FC = () => {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="p-2 rounded-[18px] border border-white/50 relative z-10 max-lg:w-full max-lg:flex max-lg:justify-center"
       >
-        <div className="relative group/video overflow-hidden rounded-2xl max-lg:w-full">
+        <div
+          onClick={togglePlay}
+          className="relative group/video overflow-hidden rounded-2xl max-lg:w-full cursor-pointer"
+        >
           <motion.div
             initial={{ filter: "blur(10px)", scale: 1.05 }}
             whileInView={{ filter: "blur(0px)", scale: 1 }}
@@ -86,30 +99,46 @@ const VideoCard: React.FC = () => {
             }}
             className="max-lg:w-full"
           >
-            <Image
-              src="/images/webp/video.webp"
-              alt="Video thumbnail"
-              width={244}
-              height={160}
-              className="rounded-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/video:scale-105 max-lg:w-full max-lg:h-auto object-cover aspect-[244/160]"
+            <video
+              ref={videoRef}
+              src="/videos/loop.mp4"
+              poster="/images/webp/video.webp"
+              muted
+              loop
+              playsInline
+              className="rounded-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/video:scale-105 w-[244px] h-[160px] max-lg:w-full max-lg:h-auto object-cover aspect-[244/160]"
             />
           </motion.div>
-          <span className="bg-black/60 w-full h-full block absolute top-0 rounded-2xl pointer-events-none transition-opacity duration-500 group-hover/video:opacity-40"></span>
-          
-          <PlayButton />
+          <span
+            className={`w-full h-full block absolute top-0 rounded-2xl pointer-events-none transition-opacity duration-500 bg-black/60 ${
+              isPlaying ? "opacity-0" : "group-hover/video:opacity-40"
+            }`}
+          ></span>
+
+          <div
+            className={`transition-opacity duration-300 ${
+              isPlaying
+                ? "opacity-0 pointer-events-none group-hover/video:opacity-100 group-hover/video:pointer-events-auto"
+                : "opacity-100"
+            }`}
+          >
+            <PlayButton isPlaying={isPlaying} />
+          </div>
         </div>
-        
+
         <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 max-lg:-bottom-3 z-50">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             viewport={{ once: true }}
             transition={{
               delay: 0.6,
               duration: 0.8,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="bg-white/50 border backdrop-blur-xl border-white text-sm font-medium py-3 px-5 rounded-full cursor-pointer block w-max max-md:text-xs max-md:px-4 max-md:py-2"
+            className="bg-white/85 border backdrop-blur-2xl border-white text-sm font-medium py-3 px-5 rounded-full cursor-pointer block w-max max-md:text-xs max-md:px-4 max-md:py-2 transition-all duration-300 hover:bg-white hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
           >
             Voir la démo
           </motion.span>
